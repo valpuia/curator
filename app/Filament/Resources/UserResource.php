@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Models\User;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Awcodes\Curator\Components\Tables\CuratorColumn;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -35,9 +36,7 @@ class UserResource extends Resource
                     ->maxLength(255),
 
                 CuratorPicker::make('avatar_url')
-                    ->label('Avatar')
-                    ->constrained(true)
-                    ->preserveFilenames(),
+                    ->label('Avatar'),
             ]);
     }
 
@@ -45,8 +44,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                CuratorColumn::make('avatar_url')
+                    ->size(40),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\ImageColumn::make('avatar_url')->label('Avatar'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
