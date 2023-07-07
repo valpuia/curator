@@ -2,8 +2,8 @@
 
 namespace App\Filament\Pages;
 
+use App\Filament\Widgets\StatsOverview;
 use Filament\Pages\Dashboard as BasePage;
-use Filament\Widgets\StatsOverviewWidget;
 
 class Dashboard extends BasePage
 {
@@ -11,15 +11,15 @@ class Dashboard extends BasePage
 
     protected static string $view = 'filament.pages.dashboard';
 
-    // protected function getColumns(): int|array
-    // {
-    //     return 2;
-    // }
+    protected function getColumns(): int|array
+    {
+        return 6;
+    }
 
-    // protected function getFooterWidgets(): array
-    // {
-    //     return [
-    //         StatsOverviewWidget::class,
-    //     ];
-    // }
+    protected function getFooterWidgets(): array
+    {
+        return [
+            StatsOverview::class,
+        ];
+    }
 }
